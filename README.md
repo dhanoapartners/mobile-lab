@@ -28,7 +28,7 @@ iPhone profiles run in Chromium by default. For Safari's real engine: `npx playw
 
 ## Appium on Android
 
-Needs Node.js 20+, Java 17+, the Android SDK, and a running emulator (Android Studio → Device Manager) or a phone with USB debugging on.
+Needs Node.js 22+, Java 17+, the Android SDK, and a running emulator (Android Studio → Device Manager) or a phone with USB debugging on.
 
 ```bash
 cd appium
