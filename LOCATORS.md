@@ -57,4 +57,5 @@ If an element has no id, **ask for one**. One line for a developer saves hours o
 - Copying the long XPath Inspector suggests. It breaks on the next layout change.
 - Locating by visible text in a translated app. Text changes per language; ids don't.
 - Writing separate Android and iOS tests when one test with accessibility ids would do.
+- Using an id that isn't unique. On iOS, this app's Login screen has three elements named "Login" (the tab, the title and the form switch), so `$('~Login')` fails with `StrictSelectorError`: WebdriverIO refuses to guess which one you meant. Android only exposes the tab, so the same test passed there. Fixes: a unique id from the developers, a narrower locator, or (as in `openTab()`) not tapping the tab when you're already on its screen. This repo's own CI hit exactly this.
 - Assuming an element is missing when it's just off-screen: scroll first (`UiScrollable` on Android, `mobile: scroll` on iOS).

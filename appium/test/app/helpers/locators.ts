@@ -15,6 +15,17 @@
 /** Accessibility id: same string on Android and iOS. */
 export const a11y = (id: string) => $(`~${id}`);
 
+/**
+ * Opens a tab and waits for its screen. If the screen is already showing, it doesn't tap again:
+ * on iOS the Login screen has three elements named "Login" (the tab, the title, the form switch),
+ * so `~Login` is ambiguous there and WebdriverIO refuses to guess (StrictSelectorError).
+ */
+export async function openTab(tab: string, screen: string) {
+  if (await a11y(screen).isDisplayed().catch(() => false)) return;
+  await a11y(tab).click();
+  await a11y(screen).waitForDisplayed();
+}
+
 /** Native alerts look different on each platform, so this is the one place with platform-specific locators. */
 export const alert = {
   async waitForShown() {

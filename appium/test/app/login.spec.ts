@@ -1,11 +1,10 @@
 /** Log in and sign up on the native demo app, including native alerts and the keyboard. */
 import { expect } from '@wdio/globals';
-import { a11y, alert, hideKeyboard } from './helpers/locators.js';
+import { a11y, openTab, alert, hideKeyboard } from './helpers/locators.js';
 
 describe('Demo app: login and sign up', () => {
   beforeEach(async () => {
-    await a11y('Login').click();
-    await a11y('Login-screen').waitForDisplayed();
+    await openTab('Login', 'Login-screen');
   });
 
   it('logs in with valid details', async () => {
