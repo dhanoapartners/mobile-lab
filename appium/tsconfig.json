@@ -6,7 +6,16 @@
     "strict": true,
     "noEmit": true,
     "skipLibCheck": true,
-    "types": ["node", "mocha", "@wdio/globals/types", "@wdio/mocha-framework", "expect-webdriverio"]
+    "types": [
+      "node",
+      "mocha",
+      "@wdio/globals/types",
+      "@wdio/mocha-framework",
+      "expect-webdriverio"
+    ]
   },
-  "include": ["test/**/*.ts", "wdio.conf.ts"]
+  "include": [
+    "test/**/*.ts",
+    "config/**/*.ts"
+  ]
 }

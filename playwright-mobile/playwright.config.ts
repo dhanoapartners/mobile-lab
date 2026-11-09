@@ -15,7 +15,7 @@ export default defineConfig({
   timeout: 30_000,
   workers: process.env.LAB_URL?.includes('localhost') ? undefined : 2,
   retries: process.env.CI ? 1 : 0,
-  reporter: [['list'], ['html', { open: 'never' }]],
+  reporter: [['list'], ['html', { open: 'never' }], ['allure-playwright', { resultsDir: 'allure-results' }]],
   use: {
     baseURL: process.env.LAB_URL || 'https://www.dhanoapartners.com',
     trace: 'retain-on-failure',
