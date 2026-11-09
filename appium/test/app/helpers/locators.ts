@@ -22,8 +22,19 @@ export const a11y = (id: string) => $(`~${id}`);
  */
 export async function openTab(tab: string, screen: string) {
   if (await a11y(screen).isDisplayed().catch(() => false)) return;
+  await dismissSystemDialog();
   await a11y(tab).click();
   await a11y(screen).waitForDisplayed();
+}
+
+/**
+ * Slow emulators sometimes cover the app with a system "… isn't responding" dialog (for the launcher or
+ * System UI, not the app under test). Tap "Wait" so the test can carry on. Android only.
+ */
+export async function dismissSystemDialog() {
+  if (!driver.isAndroid) return;
+  const wait = $('id=android:id/aerr_wait');
+  if (await wait.isExisting().catch(() => false)) await wait.click().catch(() => {});
 }
 
 /** Native alerts look different on each platform, so this is the one place with platform-specific locators. */

@@ -86,7 +86,10 @@ jobs:
           emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -no-snapshot
           disable-animations: true
           working-directory: appium
-          script: npm run test:web && npm run test:android
+          # Slow CI emulators show "System UI isn't responding" dialogs over the app; turn them off first.
+          script: |
+            adb shell settings put global hide_error_dialogs 1 || true
+            npm run test:web && npm run test:android
       - name: Sort failures (basic, by error text)
         if: ${{ !cancelled() }}
         working-directory: appium
