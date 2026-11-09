@@ -2,7 +2,7 @@
  * Practice Lab in Chrome on Android. Same journey as the Playwright tests, but on a real mobile browser:
  * real touch, the real on-screen keyboard and the phone's own Chrome.
  */
-import { browser, $, expect } from '@wdio/globals';
+import { browser, $, $$, expect } from '@wdio/globals';
 
 const tid = (id: string) => `[data-testid="${id}"]`;
 
@@ -18,7 +18,7 @@ describe('Practice Lab on Android Chrome', () => {
 
   it('the shop has no sideways scrolling on the phone', async () => {
     await browser.url('/?ui=v1#shop');
-    await $(tid('product-card')).waitForDisplayed();
+    await $$(tid('product-card'))[0].waitForDisplayed(); // $$ = all matches; $ must match exactly one
     const fits = await browser.execute(() => document.documentElement.scrollWidth <= window.innerWidth);
     expect(fits).toBe(true);
   });
