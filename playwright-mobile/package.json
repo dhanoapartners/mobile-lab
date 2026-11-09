@@ -1,0 +1,7 @@
+{
+  "name": "playwright-mobile",
+  "private": true,
+  "description": "Practice Lab on phone-sized screens with Playwright device emulation.",
+  "scripts": { "test": "playwright test", "typecheck": "tsc -p ." },
+  "devDependencies": { "@playwright/test": "1.48.2", "@types/node": "20.16.11", "typescript": "5.6.3" }
+}
