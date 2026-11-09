@@ -2,6 +2,16 @@
 
 [![CI](https://github.com/dhanoapartners/mobile-lab/actions/workflows/ci.yml/badge.svg)](https://github.com/dhanoapartners/mobile-lab/actions/workflows/ci.yml)
 
+## What this demonstrates
+
+*By Avneet Dhanoa (QualityFirstQA LLC). Part of a five-repo portfolio; start at [practice-lab](https://github.com/dhanoapartners/practice-lab).*
+
+- **Native app automation on both platforms:** one set of Appium + WebdriverIO tests running on an Android emulator and the iOS Simulator, in CI.
+- **Mobile locator strategy:** accessibility ids first, platform locators only where needed, with a guide ([LOCATORS.md](LOCATORS.md)).
+- **Platform differences handled in one place:** native alerts, the keyboard, iOS's duplicate accessibility names.
+- **Mobile web too:** the website in real Chrome on Android, and Playwright device emulation.
+- **Resilience habits:** reported fallback locators, plain-English steps, failure sorting; Allure for every suite.
+
 Three kinds of mobile testing, side by side:
 
 | What's tested | Tool | Folder | Runs on |
