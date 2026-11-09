@@ -87,6 +87,10 @@ jobs:
           disable-animations: true
           working-directory: appium
           script: npm run test:web && npm run test:android
+      - name: Sort failures (basic, by error text)
+        if: ${{ !cancelled() }}
+        working-directory: appium
+        run: npm run triage
       - name: Allure report
         if: ${{ !cancelled() }}
         working-directory: appium
@@ -139,6 +143,10 @@ jobs:
       - name: Run on the simulator
         working-directory: appium
         run: npm run test:ios
+      - name: Sort failures (basic, by error text)
+        if: ${{ !cancelled() }}
+        working-directory: appium
+        run: npm run triage
       - name: Allure report
         if: ${{ !cancelled() }}
         working-directory: appium

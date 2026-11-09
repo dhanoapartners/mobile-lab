@@ -9,7 +9,8 @@
     "test:android": "wdio run config/wdio.android.app.conf.ts",
     "test:ios": "wdio run config/wdio.ios.app.conf.ts",
     "report": "npx --yes allure-commandline@2.34.1 generate allure-results --clean -o allure-report",
-    "typecheck": "tsc -p ."
+    "typecheck": "tsc -p .",
+    "triage": "node scripts/triage-basic.mjs"
   },
   "devDependencies": {
     "@types/mocha": "10.0.10",

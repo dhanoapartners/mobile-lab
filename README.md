@@ -68,6 +68,18 @@ Real iPhones need an Apple Developer account and code signing, so this lab uses 
 
 After any Appium run: `npm run report`, then open `allure-report/index.html` (a failed test has a screenshot attached).
 
+## 3. When tests break: three habits
+
+The demo app tests include three small, deliberately simple helpers. They are the habits to build before reaching for any AI tool.
+
+| Helper | File | What it teaches |
+|---|---|---|
+| Fallback locators | `appium/test/app/helpers/fallback.ts`, `fallback.spec.ts` | List the ways to find a control, best first. Use the first that matches exactly one element, never one of several, and **report** every fallback so the test gets fixed |
+| Plain-English steps | `appium/test/app/helpers/plain-steps.ts`, `plain-steps.spec.ts` | A keyword-driven runner: fixed sentence patterns and a table of control names → accessibility ids. Unknown words fail loudly instead of being guessed |
+| Basic failure sorting | `appium/scripts/triage-basic.mjs` (`npm run triage`) | Sort failed tests by error text: environment, test issue, flaky, or "check it". Notice how many land in "check it": the error text alone can't tell a renamed id from an app crash |
+
+Discussion: for each helper, what would it need to know about the **screen** (what was showing, whether the app was still running) to make better decisions?
+
 ## How it runs in CI
 
 `.github/workflows/ci.yml` runs three jobs on every push and every night:
@@ -87,6 +99,9 @@ Each job uploads its Allure report. These are free GitHub Actions minutes for a 
 3. Open the demo app in Appium Inspector and find three elements that only have XPath locators. What id would you ask the developer to add?
 4. Switch into the demo app's **Webview** tab (`driver.switchContext`) and assert something on the web page inside it.
 5. Run the native tests on a real Android phone. What differs from the emulator?
+6. Rename an id in `fallback.spec.ts` so that two fallbacks match. What does the helper do, and why is that better than tapping the first one?
+7. Add a sign-up case to `plain-steps.spec.ts`. Which controls do you need to add to `CONTROLS`?
+8. Break a test on purpose three different ways (wrong id, wrong expected text, kill the app mid-test with `driver.terminateApp`) and run `npm run triage`. Which ones does it sort correctly?
 
 ---
 
