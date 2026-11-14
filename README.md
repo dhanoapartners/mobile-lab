@@ -26,6 +26,8 @@ The native app is the open-source [WebdriverIO demo app](https://github.com/webd
 
 Every suite writes an **Allure report**.
 
+> **Teaching this as a lab?** [`HANDOUT.md`](HANDOUT.md) is a guided, hands-on student worksheet — device emulation first, then Appium on Android and iOS, then the three resilience habits — with checkpoints to tick along the way. It anchors mobile locators with "call actors by name, not by seat."
+
 ## 1. Playwright device emulation (start here)
 
 Needs Node.js 20+.
