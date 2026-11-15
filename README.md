@@ -28,6 +28,8 @@ Every suite writes an **Allure report**.
 
 > **Teaching this as a lab?** [`HANDOUT.md`](HANDOUT.md) is a guided, hands-on student worksheet — device emulation first, then Appium on Android and iOS, then the three resilience habits — with checkpoints to tick along the way. It anchors mobile locators with "call actors by name, not by seat."
 
+> **New to the repo?** [`ARCHITECTURE.md`](ARCHITECTURE.md) has a diagram and a folder-by-folder guide to how everything fits together.
+
 ## 1. Playwright device emulation (start here)
 
 Needs Node.js 20+.
